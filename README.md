@@ -19,6 +19,8 @@ Use a public GitHub repository for free Pages hosting. Add repository Actions va
 
 Cloud login and saves require internet. Failed saves retain a draft locally; retry uses the same set ID to prevent duplicates. Supabase Free can pause after inactivity; resume it in the dashboard. A new browser starts with the default lift list; recorded lift names are recovered from cloud history. Disconnect shared devices in Settings; unsaved drafts remain in this browser.
 
+The log uses a compact phone layout with weight/reps steppers and a one-tap “Use last set” action. Choosing an exercise recalls its latest weight, reps, and unit. Saving keeps those values ready for the next set and clears the note. History → Edit opens the same form with Save changes and Cancel. Long history and settings lists scroll within the screen.
+
 ## Checks and backups
 
 `npm test` checks mixed-unit chart aggregation; `npm run build` checks TypeScript and produces static output. Before launch, test on the actual iPhone over cellular: sign in, save/reload/edit/delete, retry a failed save, inspect chart tooltips and data lists, and restore an exported JSON backup. Verify a signed-out client and a second authenticated account cannot read or write sets.
