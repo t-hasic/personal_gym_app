@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {summarize} from './metrics.js';
+test('groups days and converts mixed units before volume calculation',()=>{const r=summarize([{date:'2026-01-02',weight:100,unit:'lb',reps:5},{date:'2026-01-02',weight:100,unit:'kg',reps:2},{date:'2026-01-01',weight:10,unit:'lb',reps:1}]);assert.equal(r[0].date,'2026-01-01');assert.ok(Math.abs(r[1].max-220.46226218)<1e-6);assert.ok(Math.abs(r[1].volume-940.92452436)<1e-6);});
