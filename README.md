@@ -23,6 +23,8 @@ The log defaults to three sets with shared reps (10 by default). Tap one of the 
 
 The log uses a compact phone layout with weight/reps steppers and a one-tap “Use last set” action. Choosing an exercise recalls its latest weight, reps, and unit. Saving keeps those values ready for the next set and clears the note. History → Edit opens the same form with Save changes and Cancel. Long history and settings lists scroll within the screen.
 
+Progress → Compare workouts shows the three set weights across dates for one exercise. Each date has three bars ranked heaviest to lightest; tap for weight and reps, or expand the chart data. Dates with exactly three sets appear in the timeline. The two-date comparison below includes every recorded set and shows the change in volume. Weights are converted to your preferred unit. Original set order is not stored, so the comparison uses weight rank. The existing heaviest-set and volume charts remain under Trends.
+
 ## Checks and backups
 
 `npm test` checks mixed-unit chart aggregation; `npm run build` checks TypeScript and produces static output. Before launch, test on the actual iPhone over cellular: sign in, save/reload/edit/delete, retry a failed save, inspect chart tooltips and data lists, and restore an exported JSON backup. Verify a signed-out client and a second authenticated account cannot read or write sets.
