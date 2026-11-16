@@ -28,3 +28,20 @@ test('incomplete or invalid batches fail before writing any sets',()=>{
   for(const reps of ['', '0','2.5','abc'])assert.throws(()=>batchRows(form,{...makeBatch(),weights:['40','',''],reps}));
   assert.deepEqual(batchRows(form,{...makeBatch(),weights:['0','','']}).map(row=>row.weight),[0,0,0]);
 });
+
+import {muscleGroups,exerciseGroup} from './workouts.js';
+test('every preset is reachable in a named muscle group',()=>{
+  assert.equal(routine.length,22);
+  assert.equal(new Set(routine.map(preset=>preset.exercise)).size,22);
+  for(const preset of routine){
+    assert.ok(muscleGroups.includes(exerciseGroup(preset.exercise)));
+    assert.notEqual(exerciseGroup(preset.exercise),'Other');
+  }
+  assert.equal(exerciseGroup('Barbell Bench'),'Chest');
+  assert.equal(exerciseGroup('Pull-ups'),'Back');
+  assert.equal(exerciseGroup('Cable Face Pull'),'Shoulders');
+  assert.equal(exerciseGroup('Hammer'),'Arms');
+  assert.equal(exerciseGroup('Lunge Squat'),'Legs');
+  assert.equal(exerciseGroup('Squat'),'Legs');
+  assert.equal(exerciseGroup('My custom lift'),'Other');
+});
