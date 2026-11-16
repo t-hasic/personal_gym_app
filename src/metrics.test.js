@@ -35,3 +35,26 @@ test('comparison retains extra sets and does not change original record order',(
  assert.deepEqual(result[0].exercises[0].sets.map(set=>set.weight),[22,20,18,16]);
  assert.equal(result[0].exercises[0].volume,760);
 });
+
+import {isBodyweight} from './metrics.js';
+test('pull-up graphs track best and total reps instead of zero weight',()=>{
+ const sets=[9,7,8].map(reps=>({date:'2026-11-15',exercise:'Pull-ups',weight:0,unit:'lb',reps}));
+ const comparison=workoutComparisons(sets)[0].exercises[0];
+ assert.deepEqual(comparison.sets.map(set=>set.reps),[9,8,7]);
+ assert.equal(comparison.totalReps,24);
+ const summary=summarize(sets)[0];
+ assert.equal(summary.maxReps,9);
+ assert.equal(summary.totalReps,24);
+ assert.equal(summarize(sets,'kg')[0].totalReps,24);
+ assert.equal(workoutComparisons(sets,'kg')[0].exercises[0].totalReps,24);
+ assert.ok(isBodyweight('Pull-ups'));
+ assert.ok(isBodyweight('Pullups'));
+ assert.ok(isBodyweight('Pull ups'));
+ assert.equal(isBodyweight('Shoulder Press (DB)'),false);
+});
+test('rep trends keep workout dates separate and handle improvements',()=>{
+ const sets=[...Array(3).fill(9).map(reps=>({date:'2026-11-15',exercise:'Pull-ups',weight:0,unit:'lb',reps})),...Array(3).fill(10).map(reps=>({date:'2026-11-16',exercise:'Pull-ups',weight:0,unit:'lb',reps}))];
+ const rows=summarize(sets);
+ assert.deepEqual(rows.map(row=>row.totalReps),[27,30]);
+ assert.deepEqual(rows.map(row=>row.maxReps),[9,10]);
+});

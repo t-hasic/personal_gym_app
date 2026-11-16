@@ -23,7 +23,7 @@ The log defaults to three sets with shared reps (10 by default). Choose Chest, B
 
 The log uses a compact phone layout with weight/reps steppers and a one-tap “Use last set” action. Choosing an exercise recalls its latest weight, reps, and unit. Saving keeps those values ready for the next set and clears the note. History → Edit opens the same form with Save changes and Cancel. Long history and settings lists scroll within the screen.
 
-Progress → Compare workouts shows the three set weights across dates for one exercise. Each date has three bars ranked heaviest to lightest; tap for weight and reps, or expand the chart data. Dates with exactly three sets appear in the timeline. The two-date comparison below includes every recorded set and shows the change in volume. Weights are converted to your preferred unit. Original set order is not stored, so the comparison uses weight rank. The existing heaviest-set and volume charts remain under Trends.
+Progress → Compare workouts shows the three set weights across dates for one exercise. Each date has three bars ranked heaviest to lightest; tap for weight and reps, or expand the chart data. Dates with exactly three sets appear in the timeline. The two-date comparison below includes every recorded set and shows the change in volume. Weights are converted to your preferred unit. Original set order is not stored, so the comparison uses weight rank. Pull-ups use reps for all comparison bars, totals, tooltips, and trends, without weight units. Trends show the best set and total reps per date for Pull-ups. Other exercises keep their existing weight and volume charts under Trends.
 
 ## Checks and backups
 
