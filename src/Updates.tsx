@@ -1,11 +1,9 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {availableUpdate, refreshUrl} from './update-check.js';
 
 const env = (import.meta as any).env;
 export function Updates({disabled}: {disabled: boolean}) {
   const [version, setVersion] = useState<string | null>(null);
-  const [status, setStatus] = useState('');
-  const checking = useRef(false);
   useEffect(() => {
     if (!env.PROD) return;
     let active = true;
@@ -29,19 +27,8 @@ export function Updates({disabled}: {disabled: boolean}) {
       window.clearInterval(timer);
     };
   }, []);
-  async function checkNow() {
-    if (checking.current) return;
-    checking.current = true;
-    setStatus('Checking…');
-    try {
-      const update = await availableUpdate(env.BASE_URL, env.VITE_APP_VERSION);
-      setVersion(update);
-      setStatus(update ? '' : 'Up to date.');
-    } catch { setStatus('Could not check. Try again when connected.'); }
-    finally { checking.current = false; }
-  }
+  if (!version) return null;
   return <div className="app-updates">
-    <button type="button" className="secondary" disabled={disabled || status === 'Checking…'} onClick={() => version ? window.location.replace(refreshUrl(window.location.href)) : void checkNow()}>{version ? 'Update app' : 'Check for updates'}</button>
-    <span role="status">{status}</span>
+    <button type="button" className="secondary" disabled={disabled} onClick={() => window.location.replace(refreshUrl(window.location.href))}>Update app</button>
   </div>;
 }

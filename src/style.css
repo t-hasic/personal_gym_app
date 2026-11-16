@@ -14,4 +14,4 @@
 .log-form .details-row input{width:100%;height:48px;min-height:48px;max-height:48px;margin-top:6px;padding:10px;font-size:16px;line-height:24px;appearance:none;-webkit-appearance:none}
 .details-row input::-webkit-date-and-time-value{text-align:left;min-height:24px}
 .last-set:empty{display:none}
-.app-updates{display:flex;align-items:flex-end;flex-direction:column;gap:3px;max-width:65%}.app-updates button{min-height:44px;padding:8px 12px;font-size:12px}.app-updates span{font-size:11px;color:#5f6d62}.app-updates span:empty{display:none}
+.app-updates{display:flex;align-items:flex-end;flex-direction:column;gap:3px;max-width:65%}.app-updates button{min-height:44px;padding:8px 12px;font-size:12px}
