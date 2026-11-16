@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import {routine,makeBatch,batchRows} from './workouts.js';
 const form={exercise:'Hammer',date:'2026-11-15',unit:'lb',note:'Last set was tough'};
 
-test('all seven workout shortcuts produce the requested weights and ten reps',()=>{
+test('all workout shortcuts produce their preset weights and reps',()=>{
   for(const preset of routine){
-    const batch={...makeBatch(),same:false,weights:preset.weights.map(String)};
+    const batch={...makeBatch(),same:false,weights:preset.weights.map(String),reps:String(preset.reps)};
     const rows=batchRows({...form,exercise:preset.exercise},batch);
     assert.deepEqual(rows.map(row=>row.weight),preset.weights);
-    assert.ok(rows.every(row=>row.reps===10&&row.exercise===preset.exercise));
+    assert.ok(rows.every(row=>row.reps===preset.reps&&row.exercise===preset.exercise));
   }
 });
 test('same weight repeats across three individually editable history records',()=>{
