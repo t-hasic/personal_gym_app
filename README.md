@@ -19,6 +19,8 @@ Use a public GitHub repository for free Pages hosting. Add repository Actions va
 
 Cloud login and saves require internet. Failed saves retain a draft locally; retry uses the same set ID to prevent duplicates. Supabase Free can pause after inactivity; resume it in the dashboard. A new browser starts with the default lift list; recorded lift names are recovered from cloud history. Disconnect shared devices in Settings; unsaved drafts remain in this browser.
 
+The log defaults to three sets with shared reps (10 by default). Tap one of the seven workout shortcuts to fill your starting weights, including 20–20–18 and 40–35–35. Keep “Same weight” on to enter one weight for all three, or turn it off to adjust each set. “Save 3 sets” writes all three together as individual history records. Your last saved three-set weights, reps, and unit for each exercise are remembered on this device. Drafts survive reloads, and retries reuse set IDs. Switch to Single set for additional sets or different rep counts.
+
 The log uses a compact phone layout with weight/reps steppers and a one-tap “Use last set” action. Choosing an exercise recalls its latest weight, reps, and unit. Saving keeps those values ready for the next set and clears the note. History → Edit opens the same form with Save changes and Cancel. Long history and settings lists scroll within the screen.
 
 ## Checks and backups
